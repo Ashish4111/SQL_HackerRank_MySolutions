@@ -1,0 +1,9 @@
+with main_cte as 
+(select lat_n
+          ,rank() over(order by lat_n asc) as rank
+  from station)
+  ,tot_count as (select count(1) as tot_count
+      from station s2)
+  select round(main_cte.lat_n,4)
+    from main_cte,tot_count
+ where main_cte.rank = ((tot_count.tot_count + 1)/2);
