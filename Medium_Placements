@@ -1,0 +1,13 @@
+with main_cte as
+(select s.id as id
+         ,s.name as name
+         ,p.salary as salary
+         ,f.friend_id as friend_id
+  from students s
+   join packages p on (p.id = s.id)
+   join friends f on (f.id = s.id))
+   select main_cte.name
+     from main_cte 
+      join packages pf on (pf.id = main_cte.friend_id)
+     where pf.salary > main_cte.salary
+      order by pf.salary asc; 
