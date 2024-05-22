@@ -1,0 +1,3 @@
+select distinct s1.city 
+  from station s1
+ where remainder(id,2) = 0;
