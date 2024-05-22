@@ -1,0 +1,52 @@
+select s.name as Name
+      ,(case when s.marks between 0 and 9 then 1
+             when s.marks between 10 and 19 then 2
+             when s.marks between 20 and 29 then 3
+             when s.marks between 30 and 39 then 4
+             when s.marks between 40 and 49 then 5
+             when s.marks between 50 and 59 then 6
+             when s.marks between 60 and 69 then 7
+             when s.marks between 70 and 79 then 8
+             when s.marks between 80 and 89 then 9
+             when s.marks between 90 and 100 then 10
+       end) as grade
+         ,s.marks
+  from students s
+  where (case when s.marks between 0 and 9 then 1
+             when s.marks between 10 and 19 then 2
+             when s.marks between 20 and 29 then 3
+             when s.marks between 30 and 39 then 4
+             when s.marks between 40 and 49 then 5
+             when s.marks between 50 and 59 then 6
+             when s.marks between 60 and 69 then 7
+             when s.marks between 70 and 79 then 8
+             when s.marks between 80 and 89 then 9
+             when s.marks between 90 and 100 then 10
+       end) >= 8
+  UNION
+  select NULL as Name
+      ,(case when s.marks between 0 and 9 then 1
+             when s.marks between 10 and 19 then 2
+             when s.marks between 20 and 29 then 3
+             when s.marks between 30 and 39 then 4
+             when s.marks between 40 and 49 then 5
+             when s.marks between 50 and 59 then 6
+             when s.marks between 60 and 69 then 7
+             when s.marks between 70 and 79 then 8
+             when s.marks between 80 and 89 then 9
+             when s.marks between 90 and 100 then 10
+       end) as grade
+         ,s.marks
+  from students s
+  where (case when s.marks between 0 and 9 then 1
+             when s.marks between 10 and 19 then 2
+             when s.marks between 20 and 29 then 3
+             when s.marks between 30 and 39 then 4
+             when s.marks between 40 and 49 then 5
+             when s.marks between 50 and 59 then 6
+             when s.marks between 60 and 69 then 7
+             when s.marks between 70 and 79 then 8
+             when s.marks between 80 and 89 then 9
+             when s.marks between 90 and 100 then 10
+       end) < 8
+  order by grade desc,name asc;
