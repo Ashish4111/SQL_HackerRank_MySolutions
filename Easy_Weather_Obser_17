@@ -1,0 +1,9 @@
+with main 
+ as 
+(select lat_n,id,long_w
+   from station
+  where lat_n > 38.7780
+  order by lat_n asc)
+  select round(long_w,4)
+    from main
+    where rownum <=1; 
