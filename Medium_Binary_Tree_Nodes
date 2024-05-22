@@ -1,0 +1,15 @@
+with main_cte as 
+(select n as id
+         ,p as parent_id
+         ,level
+         ,connect_by_root n as root_id
+         ,connect_by_isleaf as leaf
+  from bst
+  start with p is null
+  connect by p = prior n)
+  select main_cte.id
+           ,(case when main_cte.parent_id IS NULL then 'Root' 
+                      when main_cte.leaf = 1 then 'Leaf'
+                      else 'Inner' end) as Types
+    from main_cte
+    order by main_cte.id; 
