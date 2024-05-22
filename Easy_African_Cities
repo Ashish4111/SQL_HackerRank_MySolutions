@@ -1,0 +1,4 @@
+select cy.name
+  from city cy
+  join country ct on (cy.Countrycode = ct.Code)
+ where ct.Continent = 'Africa';  
