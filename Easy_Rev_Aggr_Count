@@ -1,0 +1,4 @@
+select count(1) 
+  from (select *
+  from city
+ where population > 100000);
