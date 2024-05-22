@@ -1,0 +1,12 @@
+select name ||  '(' || substr(occupation,1,1) || ')'
+  from occupations
+  order by name asc;
+  
+with main_cte as
+(select distinct occupation
+          ,count(*) as cnt
+  from occupations
+  group by occupation)
+  select 'There are a total of ' || main_cte.cnt || '  ' || lower(main_cte.occupation) || 's.'
+    from main_cte
+    order by main_cte.cnt,main_cte.occupation;
