@@ -1,0 +1,4 @@
+select max(e2.salary * e2.months) || '  ' || count(e2.employee_id)
+  from employee e2
+ where e2.months * e2.salary =  (select max((months * salary)) as earnings
+  from employee);
