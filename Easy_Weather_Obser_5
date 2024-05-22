@@ -1,0 +1,15 @@
+ select city,len_city
+  from 
+(select s1.city city
+      ,length(s1.city) as len_city
+      ,row_number() over (partition by length(s1.city) order by s1.city) as rn
+  from station s1
+ where length(s1.city) = (select min(length(s2.city))
+                            from station s2))
+  where rn <= 1                         
+ union all
+ select s3.city city
+       ,length(s3.city) as len_city
+  from station s3
+ where length(s3.city) = (select max(length(s3.city))
+                            from station s3); 
